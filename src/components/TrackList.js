@@ -1,23 +1,20 @@
 import React from 'react'
-import { useDrop } from 'react-dnd'
-import { ItemTypes } from '../Constants'
+import { useDroppable } from '@dnd-kit/core'
+import { ContainerIds } from '../Constants'
 
 import Track from './Track'
 
 export default function TrackList({ colorTracks = {}, onTrackReceiveColor, onColorLeaveTrack }) {
-    const [{ isOver }, dropRef] = useDrop({
-        accept: ItemTypes.COLOR,
-        // drop: (item) => console.log('color received::', item),
-        collect: (monitor) => ({
-            isOver: !!monitor.isOver(),
-        }),
+    const { isOver, setNodeRef } = useDroppable({
+        id: ContainerIds.trackListDropId,
     })
 
+    console.log(colorTracks)
     return (
         <>
             <h3>Track Color List</h3>
             {Object.entries(colorTracks).map(([name, colors]) => (
-                <div className='track-list' key={name} ref={dropRef} style={{ backgroundColor: isOver && '#bbf' }}>
+                <div className='track-list' key={name} ref={setNodeRef} style={{ backgroundColor: isOver && '#bbf' }}>
                     <Track
                         colors={colors}
                         name={name}

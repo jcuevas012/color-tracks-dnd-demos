@@ -48,7 +48,6 @@
 .tracks-container {
     display: flex;
     background-color: gray;
-    height: 100vh;
     flex: 1;
     flex-direction: column;
     padding: 10px;

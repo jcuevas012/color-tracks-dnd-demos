@@ -4,3 +4,9 @@ export const ItemTypes = {
     COLOR_TRACK: 'color_track',
     COLOR: 'color',
 }
+
+export const ContainerIds = {
+    trackListDropId: 'track-list-drop',
+    colorPaletteDropId: 'color-palette-drop',
+    colorPaletteDragId: 'color-palette-drag',
+}

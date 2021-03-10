@@ -1,35 +1,33 @@
 import React from 'react'
-import { useDrag, useDrop } from 'react-dnd'
-import { ItemTypes } from '../Constants'
+import { useDraggable } from '@dnd-kit/core'
+import { ContainerIds } from '../Constants'
 export default function ColorPalette({ paletteColor, onPaletteColorMoved }) {
-    const [{ isDragging }, dragRef] = useDrag({
-        type: ItemTypes.COLOR_PALETTE,
-        item: { paletteColor },
-        collect: function (monitor) {
-            return { isDragging: monitor.isDragging() }
-        },
-        end: (item) => onPaletteColorMoved(item),
+    const { attributes, listeners, setNodeRef, transform } = useDraggable({
+        id: `${ContainerIds.colorPaletteDragId}-${paletteColor}`,
     })
 
-    const [{ isOver }, dropRef] = useDrop({
-        accept: ItemTypes.COLOR_PALETTE,
-        // drop: (item) => onTrackDropped(item),
-        collect: (monitor) => ({
-            isOver: !!monitor.isOver(),
-        }),
-    })
+    const style = transform
+        ? {
+              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+              backgroundColor: '#fbb',
+          }
+        : undefined
 
     return (
-        <div ref={dropRef} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
-            <div
-                className='color-palette'
-                ref={dragRef}
-                style={{
-                    backgroundColor: isDragging ? '#fbb' : paletteColor,
-                }}
-            >
-                {paletteColor && paletteColor.toUpperCase()}
-            </div>
+        <div
+            className='color-palette'
+            ref={setNodeRef}
+            style={
+                style
+                    ? style
+                    : {
+                          backgroundColor: paletteColor,
+                      }
+            }
+            {...listeners}
+            {...attributes}
+        >
+            {paletteColor && paletteColor.toUpperCase()}
         </div>
     )
 }
