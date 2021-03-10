@@ -38,7 +38,11 @@
     margin: 10px;
     background-color: palegoldenrod;
     border-radius: 10px;
+}
+
+.color-palette:hover {
     cursor: pointer;
+    opacity: 0.8;
 }
 
 .tracks-container {
@@ -70,6 +74,11 @@
     width: 85%;
 }
 
+.palette-color-track-drag:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .track {
     display: flex;
     padding: 8px 10px;
@@ -99,5 +108,9 @@
     align-items: center;
     margin-right: 2px;
     border: solid 1px black;
+}
+
+.color-box:hover {
     cursor: pointer;
+    opacity: 0.8;
 }

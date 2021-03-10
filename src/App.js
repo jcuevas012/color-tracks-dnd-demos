@@ -17,7 +17,7 @@ const App = () => {
     }
 
     const onPaletteColorReceived = (palette) => {
-        if (newColorPalettes.indexOf(palette.paletteColor) > 0) {
+        if (newColorPalettes.indexOf(palette.paletteColor) >= 0) {
             return
         }
 

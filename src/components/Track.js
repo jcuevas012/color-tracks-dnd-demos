@@ -48,7 +48,7 @@ export default function Track({ colors = [], moveColor, onColorLeave, name }) {
                         ))}
                     </div>
                     <div className='track-name'>
-                        <p>{name.toUpperCase()} Track</p>
+                        <p>{name && name.toUpperCase()} Track</p>
                     </div>
                 </div>
             </div>

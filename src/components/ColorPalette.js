@@ -28,7 +28,7 @@ export default function ColorPalette({ paletteColor, onPaletteColorMoved }) {
                     backgroundColor: isDragging ? '#fbb' : paletteColor,
                 }}
             >
-                {paletteColor.toUpperCase()}
+                {paletteColor && paletteColor.toUpperCase()}
             </div>
         </div>
     )
