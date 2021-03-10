@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+.app {
+    display: flex;
+    padding: 20px;
+    background-color: rgb(192, 189, 189);
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.tracks-container {
+    display: flex;
+    background-color: gray;
+    height: 100vh;
+    flex: 1;
+    flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.palette-color-container {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.palette-color-list {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box-container {
+    display: flex;
+    margin: 20px;
+    background-color: rgb(184, 184, 202);
+    height: 350px;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(0, 0, 0, 0.24);
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: palegoldenrod;
+    border-radius: 10px;
+}
+
+.color-palette {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: palegoldenrod;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.track-list {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: solid 1px black;
+    /* height: 100px; */
+}
+
+.track {
+    display: flex;
+    padding: 8px 10px;
+    border: solid 1px black;
+}
+
+.track-name {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-box {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2px;
+    border: solid 1px black;
+    cursor: pointer;
 }
