@@ -3,13 +3,15 @@ import { useDroppable, useDraggable } from '@dnd-kit/core'
 import { ContainerIds } from '../Constants'
 import ColorBox from './ColorBox'
 export default function Track({ colors = [], moveColor, onColorLeave, name }) {
-    // const [{ isOver }, dropRef] = useDrop({
-    //     accept: ItemTypes.COLOR,
-    //     drop: (color) => moveColor(color),
-    //     collect: (monitor) => ({
-    //         isOver: !!monitor.isOver(),
-    //     }),
-    // })
+    const { isDropTrackOver, setDropTrackNodeRef } = useDroppable({
+        id: `${ContainerIds.trackDragId}-${name}`,
+    })
+
+    console.log(name)
+
+    const { attributes, listeners, setDragTrackNodeRef, transform } = useDraggable({
+        id: `${ContainerIds.colorBoxDragId}-${name}`,
+    })
 
     // const [{ isDragging }, dragRef] = useDrag({
     //     type: ItemTypes.COLOR_PALETTE,
@@ -29,10 +31,11 @@ export default function Track({ colors = [], moveColor, onColorLeave, name }) {
     // })
 
     // console.log('unique track for color palette::', isPaletteColorOver)
-
-    console.log(colors)
-    console.log(name)
-    console.log('---->>>')
+    const style = transform
+        ? {
+              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+          }
+        : undefined
 
     return (
         <div
@@ -42,20 +45,26 @@ export default function Track({ colors = [], moveColor, onColorLeave, name }) {
         >
             <div
                 className='palette-color-track-drag'
-                // ref={dragRef}
+                ref={setDragTrackNodeRef}
+                style={style}
                 // style={{ backgroundColor: isDragging ? '#bbf' : 'rgba(0,0,0,.12' }}
+
+                {...attributes}
+                {...listeners}
             >
                 <div
                     className='track'
-                    // ref={dropRef}
-                    // style={{ backgroundColor: !isOver ? '#ebeef0' : '#5F6CD4' }}
+                    ref={setDropTrackNodeRef}
+                    style={{ backgroundColor: !isDropTrackOver ? '#ebeef0' : '#5F6CD4' }}
                 >
                     <div className='color-list-container'>
                         {colors.map((color) => (
-                            <ColorBox key={color} color={color} onColorLeave={onColorLeave} />
+                            <ColorBox key={color} color={color} />
                         ))}
                     </div>
-                    <div className='track-name'>{/* <p>{name && name.toUpperCase()} Track</p> */}</div>
+                    <div className='track-name'>
+                        <p>{name && name.toUpperCase()} Track</p>
+                    </div>
                 </div>
             </div>
         </div>

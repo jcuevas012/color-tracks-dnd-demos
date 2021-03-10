@@ -9,4 +9,7 @@ export const ContainerIds = {
     trackListDropId: 'track-list-drop',
     colorPaletteDropId: 'color-palette-drop',
     colorPaletteDragId: 'color-palette-drag',
+    colorBoxDragId: 'color-box-drag',
+    trackDragId: 'track-drag',
+    trackDropId: 'track-drag',
 }

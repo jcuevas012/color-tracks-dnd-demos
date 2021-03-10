@@ -9,12 +9,11 @@ export default function TrackList({ colorTracks = {}, onTrackReceiveColor, onCol
         id: ContainerIds.trackListDropId,
     })
 
-    console.log(colorTracks)
     return (
         <>
             <h3>Track Color List</h3>
             {Object.entries(colorTracks).map(([name, colors]) => (
-                <div className='track-list' key={name} ref={setNodeRef} style={{ backgroundColor: isOver && '#bbf' }}>
+                <div className='track-list' key={name} ref={setNodeRef} style={{ backgroundColor: isOver && 'blue' }}>
                     <Track
                         colors={colors}
                         name={name}

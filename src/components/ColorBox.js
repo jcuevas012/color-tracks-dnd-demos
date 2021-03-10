@@ -1,21 +1,31 @@
 import React from 'react'
-import { useDrag } from 'react-dnd'
-import { ItemTypes } from '../Constants'
-export default function ColorBox({ color, onColorLeave }) {
-    // const [{ isDragging }, dragRef] = useDrag({
-    //     type: ItemTypes.COLOR,
-    //     item: { color },
-    //     end: (color) => onColorLeave(color),
-    //     collect: function (monitor) {
-    //         return { isDragging: monitor.isDragging() }
-    //     },
-    // })
+import { useDraggable } from '@dnd-kit/core'
+import { ContainerIds } from '../Constants'
+export default function ColorBox({ color }) {
+    const { attributes, listeners, setNodeRef, transform } = useDraggable({
+        id: `${ContainerIds.colorBoxDragId}-${color}`,
+    })
+
+    const style = transform
+        ? {
+              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+              backgroundColor: '#fbb',
+          }
+        : undefined
 
     return (
         <div
             className='color-box'
-            // ref={dragRef}
-            // style={{ backgroundColor: !isDragging ? color : 'rgba(0,0,0,.12)' }}
+            ref={setNodeRef}
+            style={
+                style
+                    ? style
+                    : {
+                          backgroundColor: color,
+                      }
+            }
+            {...listeners}
+            {...attributes}
         >
             <span>{color}</span>
         </div>
