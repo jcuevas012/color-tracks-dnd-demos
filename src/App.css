@@ -12,54 +12,22 @@
     width: 100%;
 }
 
-.tracks-container {
-    display: flex;
-    background-color: gray;
-    height: 100vh;
-    flex: 1;
-    flex-direction: column;
-}
-
 .palette-color-container {
     display: flex;
     flex-direction: column;
     background-color: black;
     height: 100vh;
+    align-items: center;
+}
+
+.palette-color-container h3 {
+    color: white;
 }
 
 .palette-color-list {
     display: flex;
     flex-direction: column;
     width: 300px;
-}
-
-.box-container {
-    display: flex;
-    margin: 20px;
-    background-color: rgb(184, 184, 202);
-    height: 350px;
-}
-
-.box {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.12);
-    border: 2px solid rgba(0, 0, 0, 0.24);
-    margin-right: 20px;
-    border-radius: 10px;
-}
-
-.card {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: palegoldenrod;
-    border-radius: 10px;
 }
 
 .color-palette {
@@ -73,18 +41,45 @@
     cursor: pointer;
 }
 
+.tracks-container {
+    display: flex;
+    background-color: gray;
+    height: 100vh;
+    flex: 1;
+    flex-direction: column;
+    padding: 10px;
+}
+
 .track-list {
     display: flex;
     flex-direction: column;
     padding: 8px 10px;
     border: solid 1px black;
-    /* height: 100px; */
+    background-color: gray;
+    padding: 15px;
+}
+
+.palette-color-track-drop {
+    display: flex;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 10px 0;
+    background-color: #ffab73;
+}
+.palette-color-track-drag {
+    width: 85%;
 }
 
 .track {
     display: flex;
     padding: 8px 10px;
-    border: solid 1px black;
+    border: solid 1px gray;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.color-list-container {
+    display: flex;
 }
 
 .track-name {
@@ -93,6 +88,7 @@
     height: 100px;
     justify-content: center;
     align-items: center;
+    opacity: 0.5;
 }
 
 .color-box {

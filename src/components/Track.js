@@ -20,16 +20,37 @@ export default function Track({ colors = [], moveColor, onColorLeave, name }) {
         end: (item) => console.log('drag from track color palette', item),
     })
 
+    const [{ isPaletteColorOver }, dropPaletteColorRef] = useDrop({
+        accept: ItemTypes.COLOR_PALETTE,
+        drop: (paletteColor) => console.log(paletteColor, 'dropped'),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver(),
+        }),
+    })
+
+    console.log('unique track for color palette::', isPaletteColorOver)
+
     return (
-        <div div ref={dragRef} style={{ backgroundColor: isDragging ? '#bbf' : 'rgba(0,0,0,.12' }}>
-            <div className='track' ref={dropRef} style={{ backgroundColor: !isOver ? '#ebeef0' : '#5F6CD4' }}>
-                {colors.length === 0 ? (
-                    <div className='track-name'>
-                        <p>{name}</p>
+        <div
+            className='palette-color-track-drop'
+            ref={dropPaletteColorRef}
+            style={{ backgroundColor: isPaletteColorOver && 'blue' }}
+        >
+            <div
+                className='palette-color-track-drag'
+                ref={dragRef}
+                style={{ backgroundColor: isDragging ? '#bbf' : 'rgba(0,0,0,.12' }}
+            >
+                <div className='track' ref={dropRef} style={{ backgroundColor: !isOver ? '#ebeef0' : '#5F6CD4' }}>
+                    <div className='color-list-container'>
+                        {colors.map((color) => (
+                            <ColorBox key={color} color={color} onColorLeave={onColorLeave} />
+                        ))}
                     </div>
-                ) : (
-                    colors.map((color) => <ColorBox key={color} color={color} onColorLeave={onColorLeave} />)
-                )}
+                    <div className='track-name'>
+                        <p>{name.toUpperCase()} Track</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

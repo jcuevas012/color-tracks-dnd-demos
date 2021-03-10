@@ -17,9 +17,17 @@ const App = () => {
     }
 
     const onPaletteColorReceived = (palette) => {
+        if (newColorPalettes.indexOf(palette.paletteColor) > 0) {
+            return
+        }
+
         console.log(palette, 'received')
         const colorPalettes = [...newColorPalettes, palette.name]
         setNewColorPalettes(colorPalettes)
+
+        const newColorMap = { ...colorMap }
+        delete newColorMap[palette.name]
+        setColors(newColorMap)
     }
 
     const onTrackDropped = (item) => {
@@ -42,7 +50,6 @@ const App = () => {
         console.log(tracks[track])
         const newTrackColors = tracks[track].filter((color) => color !== item.color)
         tracks[track] = [...newTrackColors]
-        console.log(tracks)
         console.log(`${item.color} remove from ${track} track`)
         setColors({ ...tracks })
     }

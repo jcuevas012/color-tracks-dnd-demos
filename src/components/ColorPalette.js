@@ -20,7 +20,7 @@ export default function ColorPalette({ paletteColor, onPaletteColorMoved }) {
     })
 
     return (
-        <div div ref={dropRef} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
+        <div ref={dropRef} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
             <div
                 className='color-palette'
                 ref={dragRef}

@@ -20,8 +20,9 @@ export default function TrackContainer({ onTrackDropped, addColorToTrack, remove
         removeColorFromTrack(track, color)
     }
 
+    console.log('track list over', isOver)
     return (
-        <div className='tracks-container' ref={dropRef} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
+        <div className='tracks-container' ref={dropRef} style={{ backgroundColor: isOver && 'red' }}>
             <TrackList
                 colorTracks={colorTracks}
                 onTrackReceiveColor={onTrackReceiveColor}

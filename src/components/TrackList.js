@@ -14,16 +14,18 @@ export default function TrackList({ colorTracks = {}, onTrackReceiveColor, onCol
     })
 
     return (
-        <div className='track-list' ref={dropRef} style={{ backgroundColor: isOver ? '#bbf' : 'rgba(0,0,0,.12' }}>
+        <>
+            <h3>Track Color List</h3>
             {Object.entries(colorTracks).map(([name, colors]) => (
-                <Track
-                    colors={colors}
-                    name={name}
-                    key={name}
-                    onColorLeave={(color) => onColorLeaveTrack(name, color)}
-                    moveColor={(color) => onTrackReceiveColor(name, color)}
-                />
+                <div className='track-list' key={name} ref={dropRef} style={{ backgroundColor: isOver && '#bbf' }}>
+                    <Track
+                        colors={colors}
+                        name={name}
+                        onColorLeave={(color) => onColorLeaveTrack(name, color)}
+                        moveColor={(color) => onTrackReceiveColor(name, color)}
+                    />
+                </div>
             ))}
-        </div>
+        </>
     )
 }

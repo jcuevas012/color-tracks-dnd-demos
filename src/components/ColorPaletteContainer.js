@@ -15,6 +15,7 @@ export default function ColorPaletteContainer({ colorPalettes, onPaletteColorMov
 
     return (
         <div className='palette-color-container' ref={dropRef} style={{ backgroundColor: isOver && 'yellow' }}>
+            <h3>Color Palette List</h3>
             <div className='palette-color-list'>
                 {colorPalettes.map((paletteColor, i) => (
                     <ColorPalette key={i} paletteColor={paletteColor} onPaletteColorMoved={onPaletteColorMoved} />
