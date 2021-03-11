@@ -7,8 +7,6 @@ export default function Track({ colors = [], moveColor, onColorLeave, name }) {
         id: `${ContainerIds.trackDragId}-${name}`,
     })
 
-    console.log(name)
-
     const { attributes, listeners, setDragTrackNodeRef, transform } = useDraggable({
         id: `${ContainerIds.colorBoxDragId}-${name}`,
     })

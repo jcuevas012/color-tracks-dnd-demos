@@ -63,6 +63,7 @@ const App = () => {
     // }
 
     function handleDragEnd(event) {
+        console.log('drag end')
         console.log(event)
         if (event.over && event.over.id === 'droppable') {
         }
